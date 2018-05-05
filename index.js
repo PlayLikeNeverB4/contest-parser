@@ -9,7 +9,7 @@ const express = require('express'),
 const _ = require('lodash'),
       moment = require('moment-timezone'),
       logger = require('winston'),
-      dbUtils = require('./app/db_utils'),
+      // dbUtils = require('./app/db_utils'),
       contestImporter = require('./app/contest_importer');
 
 // Logging levels: error, warn, info, verbose, debug, silly

@@ -7,15 +7,12 @@ const config = require('config'),
 
 let db;
 
-console.log("before db");
 if (process.env.DATABASE_URL) {
   // production
-  console.log("before db - production");
   db = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
   });
-  console.log("after db - production");
 } else {
   // local
   const DB_CONNECTION_STRING = config.get('dbConnectionString');
@@ -25,9 +22,7 @@ if (process.env.DATABASE_URL) {
   });
 }
 
-console.log("before connect");
 db.connect();
-console.log("after connect");
 
 
 const dbUtils = {
