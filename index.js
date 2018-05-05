@@ -34,7 +34,7 @@ app.listen(process.env.PORT || 1337, () => logger.info('Server is listening...')
 // Keep contests in memory
 let contests = [];
 
-Fetch contests into memory from the db
+// Fetch contests into memory from the db
 dbUtils.getContests().then((dbContests) => {
   contests = dbContests;
 });
