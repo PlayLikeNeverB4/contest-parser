@@ -35,9 +35,9 @@ app.listen(process.env.PORT || 1337, () => logger.info('Server is listening...')
 let contests = [];
 
 // Fetch contests into memory from the db
-dbUtils.getContests().then((dbContests) => {
-  contests = dbContests;
-});
+// dbUtils.getContests().then((dbContests) => {
+//   contests = dbContests;
+// });
 
 app.get('/contests/:source', (req, res) => {
   const source = req.params.source.toLowerCase();
@@ -46,16 +46,16 @@ app.get('/contests/:source', (req, res) => {
   res.status(200).send(filteredContests);
 });
 
-// Scrape the websites and save the data in the db
-const CONTESTS_FETCH_INTERVAL = process.env.CONTESTS_FETCH_INTERVAL || config.get('contestsFetchInterval');
+// // Scrape the websites and save the data in the db
+// const CONTESTS_FETCH_INTERVAL = process.env.CONTESTS_FETCH_INTERVAL || config.get('contestsFetchInterval');
 
-const refreshContests = () => {
-  contestImporter.run().then((dbContests) => {
-    contests = dbContests;
-  });
-};
+// const refreshContests = () => {
+//   contestImporter.run().then((dbContests) => {
+//     contests = dbContests;
+//   });
+// };
 
-refreshContests();
-setInterval(() => {
-  refreshContests();
-}, CONTESTS_FETCH_INTERVAL);
+// refreshContests();
+// setInterval(() => {
+//   refreshContests();
+// }, CONTESTS_FETCH_INTERVAL);
