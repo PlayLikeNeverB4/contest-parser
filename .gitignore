@@ -1,3 +1,4 @@
 scripts/db_scripts
+scripts/deploy_db
 node_modules/
 npm-debug.log
