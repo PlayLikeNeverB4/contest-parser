@@ -55,6 +55,7 @@ const dbUtils = {
                   [ contest.id, contest.name, contest.startTimeSeconds, contest.source ], (err, res) => {
           if (err) {
             logger.error('Error while saving contests!');
+            logger.error(err);
           }
           resolve();
         });
@@ -73,10 +74,12 @@ const dbUtils = {
       db.query("TRUNCATE TABLE contests", (err, res) => {
         if (err) {
           logger.error('Error while clearing contests!');
+          logger.error(err);
         }
         db.query("ALTER SEQUENCE contests_id_seq RESTART", (err, res) => {
           if (err) {
             logger.error('Error while reseting contests primary key!');
+            logger.error(err);
           }
           resolve();
         });
