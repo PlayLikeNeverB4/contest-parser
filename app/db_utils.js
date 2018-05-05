@@ -39,9 +39,9 @@ const dbUtils = {
         }
       };
       if (source) {
-        db.query(`SELECT contest_id, name, start_time FROM contests WHERE source = $1`, [ source ], callback);
+        db.query(`SELECT contest_id, name, start_time, url FROM contests WHERE source = $1`, [ source ], callback);
       } else {
-        db.query(`SELECT contest_id, name, start_time, source FROM contests`, callback);
+        db.query(`SELECT contest_id, name, start_time, source, url FROM contests`, callback);
       }
     });
   },
@@ -49,10 +49,10 @@ const dbUtils = {
   saveContests: (contests) => {
     const insertPromises = contests.map((contest) => {
       return new Promise((resolve, reject) => {
-        db.query("INSERT INTO contests(contest_id, name, start_time, source) \
-                  VALUES ($1, $2, $3, $4) \
+        db.query("INSERT INTO contests(contest_id, name, start_time, source, url) \
+                  VALUES ($1, $2, $3, $4, $5) \
                   ON CONFLICT (contest_id, source) DO NOTHING",
-                  [ contest.id, contest.name, contest.startTimeSeconds, contest.source ], (err, res) => {
+                  [ contest.id, contest.name, contest.startTimeSeconds, contest.source, contest.url ], (err, res) => {
           if (err) {
             logger.error('Error while saving contests!');
             logger.error(err);
