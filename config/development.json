@@ -1,0 +1,6 @@
+{
+    "dbConnectionString": "postgres://gmarcus:@localhost:5432/contestparser",
+    "contestsFetchInterval": 60000,
+    "loggerLevel": "info",
+    "newRelicLicenseKey": ""
+}

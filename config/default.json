@@ -1,0 +1,6 @@
+{
+    "dbConnectionString": "",
+    "contestsFetchInterval": 60000,
+    "loggerLevel": "info",
+    "newRelicLicenseKey": ""
+}
