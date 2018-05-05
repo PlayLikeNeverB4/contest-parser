@@ -7,20 +7,20 @@ const config = require('config'),
 
 let db;
 
-// if (process.env.DATABASE_URL) {
-//   // production
-//   db = new Client({
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: true,
-//   });
-// } else {
-//   // local
-//   const DB_CONNECTION_STRING = config.get('dbConnectionString');
-//   db = new Client({
-//     connectionString: DB_CONNECTION_STRING,
-//     ssl: false,
-//   });
-// }
+if (process.env.DATABASE_URL) {
+  // production
+  db = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+  });
+} else {
+  // local
+  const DB_CONNECTION_STRING = config.get('dbConnectionString');
+  db = new Client({
+    connectionString: DB_CONNECTION_STRING,
+    ssl: false,
+  });
+}
 
 // db.connect();
 
