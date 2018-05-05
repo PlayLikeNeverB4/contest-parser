@@ -39,12 +39,12 @@ let contests = [];
 //   contests = dbContests;
 // });
 
-app.get('/contests/:source', (req, res) => {
-  const source = req.params.source.toLowerCase();
-  let filteredContests = _.filter(contests, (contest) => contest.source.toLowerCase() === source);
-  filteredContests = filteredContests.map((contest) => _.omit(contest, 'source'));
-  res.status(200).send(filteredContests);
-});
+// app.get('/contests/:source', (req, res) => {
+//   const source = req.params.source.toLowerCase();
+//   let filteredContests = _.filter(contests, (contest) => contest.source.toLowerCase() === source);
+//   filteredContests = filteredContests.map((contest) => _.omit(contest, 'source'));
+//   res.status(200).send(filteredContests);
+// });
 
 // // Scrape the websites and save the data in the db
 // const CONTESTS_FETCH_INTERVAL = process.env.CONTESTS_FETCH_INTERVAL || config.get('contestsFetchInterval');
