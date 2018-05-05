@@ -20,10 +20,10 @@ logger.add(logger.transports.Console, {
   level: LOGGER_LEVEL,
 });
 
-if (process.env.NODE_ENV === 'production') {
-  logger.info('Setting up New Relic.');
-  require('newrelic');
-}
+// if (process.env.NODE_ENV === 'production') {
+//   logger.info('Setting up New Relic.');
+//   require('newrelic');
+// }
 
 moment.locale('ro');
 moment.tz.setDefault('UTC');
