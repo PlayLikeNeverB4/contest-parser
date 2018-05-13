@@ -26,7 +26,7 @@ exports.up = function(db) {
       notNull: true,
     },
     start_time: {
-      type: 'integer',
+      type: 'int',
       notNull: true,
     },
     url: {
