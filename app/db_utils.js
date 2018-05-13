@@ -85,7 +85,48 @@ const dbUtils = {
         });
       });
     });
-  }
+  },
+
+  addManualContest: (contest) => {
+    return new Promise((resolve, reject) => {
+      db.query("INSERT INTO manual_contests(name, start_time, url, source_name) \
+                VALUES ($1, $2, $3, $4)",
+                [ contest.name, contest.start_time, contest.url, contest.source_name ], (err, res) => {
+        if (err) {
+          logger.error('Error while saving manual contest!');
+          logger.error(err);
+          resolve(false);
+        }
+        resolve(true);
+      });
+    });
+  },
+
+  getManualContests: () => {
+    return new Promise((resolve, reject) => {
+      db.query("SELECT id, name, start_time, url, source_name\
+                FROM manual_contests", (err, res) => {
+        if (err) {
+          logger.error('Error while fetching manual contests!');
+          logger.error(err);
+          resolve([]);
+        }
+        resolve(res.rows);
+      });
+    });
+  },
+
+  removeOldManualContests: () => {
+    db.query(
+      `DELETE FROM manual_contests WHERE start_time < extract(epoch from NOW())`,
+      (err) => {
+        if (err) {
+          logger.error('Error while deleting old manual contests!');
+          logger.error(err);
+        }
+      }
+    );
+  },
 };
 
 module.exports = dbUtils;

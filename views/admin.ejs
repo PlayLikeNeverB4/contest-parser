@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+  <h1>Add custom contest</h1>
+
+  <% if (locals.flashMessages && flashMessages.length > 0) { %>
+    <% flashMessages.forEach((flashMessage) => { %>
+      <h3><%= flashMessage %></h3>
+    <% }); %>
+  <% } %>
+
+  <form action="/add_contest" method="post">
+    <label for="name">Contest name</label>
+    <input type="text" id="name" name="name">
+    <br/>
+
+    <label for="start_time">Starting time</label>
+    <input type="text" id="start-time" name="start_time">
+    <a href="https://www.epochconverter.com">Convert time</a>
+    <br/>
+
+    <label for="url">URL</label>
+    <input type="text" id="url" name="url">    
+    <br/>
+
+    <label for="source-name">Source pretty name</label>
+    <input type="text" id="source-name" name="source_name">    
+    <br/>
+
+    <label for="token">Admin token</label>
+    <input type="text" id="token" name="token">    
+    <br/>
+
+    <input type="submit" value="Submit"/>
+  </form>
+</body>
+</html>
