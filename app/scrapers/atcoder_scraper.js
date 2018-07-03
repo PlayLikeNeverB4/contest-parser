@@ -8,7 +8,7 @@ class atcoderScraper extends baseScraper {
     const upcomingContestsTable = $(".table-responsive:nth-of-type(2) > table");
     const contests = upcomingContestsTable.find("> tbody > tr").map((index, row) => {
       const url = $(row).find("> td:nth-of-type(2) a").attr("href");
-      const id = url.match(/\/\/(\w*)\..*/)[1];
+      const id = url.match(/\/\/([\w-]*)\..*/)[1];
       const name = $(row).find("> td:nth-of-type(2) a").text();
       const isoTimestamp = $(row).find("> td:nth-of-type(1) a").attr("href").match(/.*\?iso=([\w\d]*)\&/)[1];
       const startTimeSeconds = moment.tz(isoTimestamp, "Asia/Tokyo").unix();
